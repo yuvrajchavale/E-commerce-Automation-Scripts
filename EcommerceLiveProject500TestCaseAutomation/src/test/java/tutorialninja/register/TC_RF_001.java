@@ -30,8 +30,8 @@ public class TC_RF_001 {
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
-
-	}
+		driver.quit();
+		}
 	
 	public String generateNewMail() {
 		
