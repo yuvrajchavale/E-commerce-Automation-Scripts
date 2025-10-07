@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 
-public class TC_RF_001 {
+public class TC_RF_008 {
+
 
 	@Test
 	public void VerifyRegistrationWithMandatoryFields() {
@@ -26,13 +26,14 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(generateNewMail());
 		driver.findElement(By.xpath("//input[@id='input-telephone']")).sendKeys("5835354127");
 		driver.findElement(By.id("input-password")).sendKeys("g@1233487");
-		driver.findElement(By.id("input-confirm")).sendKeys("g@1233487");
+		driver.findElement(By.id("input-confirm")).sendKeys("g@123211333487");
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
-		driver.findElement(By.linkText("Continue")).click();
-		Assert.assertTrue(driver.findElement(By.xpath("//div[@id= 'content']/h2[text()='My Account']")).isDisplayed());
-		//driver.quit();
+		
+		String expPsdWarningMsg = "Password confirmation does not match password!";
+		Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Password confirmation does not match password!']")).getText(),expPsdWarningMsg);
+
+		driver.quit();
 		}
 	
 	public String generateNewMail() {
@@ -40,4 +41,6 @@ public class TC_RF_001 {
 		return new Date().toString().replaceAll("\\s", "").replaceAll("\\:", "")+ "@gmail.com";
 	}
 
+
+	
 }

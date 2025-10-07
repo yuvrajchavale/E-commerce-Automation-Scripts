@@ -8,10 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 
-public class TC_RF_001 {
-
+public class TC_RF_003 {
+	
 	@Test
 	public void VerifyRegistrationWithMandatoryFields() {
 		
@@ -27,17 +26,34 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//input[@id='input-telephone']")).sendKeys("5835354127");
 		driver.findElement(By.id("input-password")).sendKeys("g@1233487");
 		driver.findElement(By.id("input-confirm")).sendKeys("g@1233487");
+		driver.findElement(By.xpath("(//input[@name='newsletter'])[1]")).click();
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
+				
+		String expTxt1 = "Your Account Has Been Created!";
+		String expTxt2 = "Congratulations! Your new account has been successfully created!";
+		String expTxt3 = "You can now take advantage of member privileges to enhance your online shopping experience with us.";
+		String expTxt4 = "If you have ANY questions about the operation of this online shop, please e-mail the store owner.";
+		String expTxt5 = "A confirmation has been sent to the provided e-mail address. If you have not received it within the hour, please contact us.";
+		
+		String actTxt = driver.findElement(By.id("content")).getText();
+		Assert.assertTrue(actTxt.contains(expTxt1));
+		Assert.assertTrue(actTxt.contains(expTxt2));
+		Assert.assertTrue(actTxt.contains(expTxt3));
+		Assert.assertTrue(actTxt.contains(expTxt4));
+		Assert.assertTrue(actTxt.contains(expTxt5));
+		
 		driver.findElement(By.linkText("Continue")).click();
-		Assert.assertTrue(driver.findElement(By.xpath("//div[@id= 'content']/h2[text()='My Account']")).isDisplayed());
-		//driver.quit();
+		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+
+		driver.quit();
 		}
 	
 	public String generateNewMail() {
 		
 		return new Date().toString().replaceAll("\\s", "").replaceAll("\\:", "")+ "@gmail.com";
 	}
+
 
 }
