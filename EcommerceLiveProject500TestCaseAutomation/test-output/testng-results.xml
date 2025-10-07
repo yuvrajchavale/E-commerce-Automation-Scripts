@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-07T00:42:43 IST" name="Default suite" finished-at="2025-10-07T00:42:50 IST" duration-ms="7077">
+  <suite started-at="2025-10-07T01:29:23 IST" name="Default suite" finished-at="2025-10-07T01:29:30 IST" duration-ms="7240">
     <groups>
     </groups>
-    <test started-at="2025-10-07T00:42:43 IST" name="Default test" finished-at="2025-10-07T00:42:50 IST" duration-ms="7077">
+    <test started-at="2025-10-07T01:29:23 IST" name="Default test" finished-at="2025-10-07T01:29:30 IST" duration-ms="7240">
       <class name="tutorialninja.register.TC_RF_001">
-        <test-method signature="VerifyRegistrationWithMandatoryFields()[pri:0, instance:tutorialninja.register.TC_RF_001@18df8434]" started-at="2025-10-07T00:42:43 IST" name="VerifyRegistrationWithMandatoryFields" finished-at="2025-10-07T00:42:50 IST" duration-ms="7001" status="PASS">
+        <test-method signature="VerifyRegistrationWithMandatoryFields()[pri:0, instance:tutorialninja.register.TC_RF_001@18df8434]" started-at="2025-10-07T01:29:23 IST" name="VerifyRegistrationWithMandatoryFields" finished-at="2025-10-07T01:29:30 IST" duration-ms="7164" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyRegistrationWithMandatoryFields -->
