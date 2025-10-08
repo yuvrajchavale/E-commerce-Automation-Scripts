@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -45,19 +47,57 @@ public class TC_RF_10 {
 		File srcScreenShot1 = formElement.getScreenshotAs(OutputType.FILE);		
 		FileHandler.copy(srcScreenShot1, new File(System.getProperty("user.dir")+"\\Screenshots\\sc1Actual.png"));
 		
-		BufferedImage actualBImg = ImageIO.read(new File(System.getProperty("user.dir")+"\\Screenshots\\sc1Actual.png"));
-		BufferedImage expectedBImg = ImageIO.read(new File(System.getProperty("user.dir")+ "\\Screenshots\\sc1Expected.png"));
+		Assert.assertFalse(comparetwoScreenshot(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png", 
+				System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png"));
+		 
+		//We are getting false here because images are similar or else it will give true
+		/*
+		 * boolean b = imageDifference.hasDiff(); System.out.println(b);
+		 */
 		
+		  //For Second TestCase
+		
+		  driver.findElement(By.xpath("//input[@id='input-email']")).clear();
+		  driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("amotoori@");
+		  driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();
+		  Thread.sleep(5000);
+		  File srcScreenShot2 = formElement.getScreenshotAs(OutputType.FILE);
+		  FileHandler.copy(srcScreenShot2, new File(System.getProperty("user.dir")+"\\Screenshots\\sc2Actual.png"));
+		
+		  Assert.assertFalse(comparetwoScreenshot(System.getProperty("user.dir")+"\\Screenshots\\sc2Actual.png",
+				  System.getProperty("user.dir")+"\\Screenshots\\sc2Expected.png"));
+		  
+		  //Third TestData:amotoori@gmail 
+		  driver.findElement(By.xpath("//input[@id='input-email']")).clear();
+		  driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("amotoori@gmail");
+		  driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();		  
+		  String expEmaiValidation = "E-Mail Address does not appear to be valid!";
+		  Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-danger']")).getText(), expEmaiValidation);
+		  
+		  //Fourth TestData amottori@gmail.
+		  driver.findElement(By.xpath("//input[@id='input-email']")).clear();
+		  driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("amotoori@gmail.");
+		  driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();		  
+		  
+		  
+		  WebElement formElement1 = driver.findElement(By.xpath("//form[@class='form-horizontal']"));
+		  Thread.sleep(3000);
+		  File srcScreenShot3 = formElement1.getScreenshotAs(OutputType.FILE);		
+		  FileHandler.copy(srcScreenShot3, new File(System.getProperty("user.dir")+"\\Screenshots\\sc3Actual.png"));
+		  
+		  Assert.assertFalse(comparetwoScreenshot(System.getProperty("user.dir")+"\\Screenshots\\sc3Actual.png",
+				  System.getProperty("user.dir")+"\\Screenshots\\sc3Expected.png"));
+		  driver.quit();
+
+	}
+	public boolean comparetwoScreenshot(String actualImagePath,String ExpectedImagePath) throws Throwable {
+		BufferedImage actualBImg = ImageIO.read(new File(actualImagePath));
+		BufferedImage expectedBImg = ImageIO.read(new File(ExpectedImagePath));
+
 		ImageDiffer imgDiffer = new ImageDiffer();
 		ImageDiff imageDifference = imgDiffer.makeDiff(expectedBImg, actualBImg);
-		
-		//We are getting false here because images are simmilar orelse it will give true
-		boolean b = imageDifference.hasDiff();
-		System.out.println(b);
-		
-		Assert.assertFalse(imageDifference.hasDiff());
-		driver.quit();
-}
+		return imageDifference.hasDiff();
+	}
 	   
 	
 }
