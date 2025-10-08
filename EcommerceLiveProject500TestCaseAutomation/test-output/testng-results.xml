@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-08T03:55:05 IST" name="Default suite" finished-at="2025-10-08T03:55:12 IST" duration-ms="6651">
+  <suite started-at="2025-10-08T08:17:37 IST" name="Default suite" finished-at="2025-10-08T08:17:47 IST" duration-ms="9238">
     <groups>
     </groups>
-    <test started-at="2025-10-08T03:55:05 IST" name="Default test" finished-at="2025-10-08T03:55:12 IST" duration-ms="6651">
-      <class name="tutorialninja.register.TC_RF_008">
-        <test-method signature="VerifyRegistrationWithMandatoryFields()[pri:0, instance:tutorialninja.register.TC_RF_008@18df8434]" started-at="2025-10-08T03:55:05 IST" name="VerifyRegistrationWithMandatoryFields" finished-at="2025-10-08T03:55:12 IST" duration-ms="6565" status="PASS">
+    <test started-at="2025-10-08T08:17:37 IST" name="Default test" finished-at="2025-10-08T08:17:47 IST" duration-ms="9238">
+      <class name="tutorialninja.register.TC_RF_10">
+        <test-method signature="VerifyRegistrationWithInvalidMail()[pri:0, instance:tutorialninja.register.TC_RF_10@4b45a2f5]" started-at="2025-10-08T08:17:37 IST" name="VerifyRegistrationWithInvalidMail" finished-at="2025-10-08T08:17:47 IST" duration-ms="9202" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerifyRegistrationWithMandatoryFields -->
-      </class> <!-- tutorialninja.register.TC_RF_008 -->
+        </test-method> <!-- VerifyRegistrationWithInvalidMail -->
+      </class> <!-- tutorialninja.register.TC_RF_10 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
